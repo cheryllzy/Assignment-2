@@ -1,0 +1,50 @@
+.HeaderName {
+  color: black;
+  background-color: aliceblue;
+  height: 50px;
+  display: flex;
+  padding: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  margin: 0%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 30px;
+  height: 500px;
+}
+.item {
+  display: flex;
+  border: rebeccapurple 2px solid;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  border: black 2px solid;
+  justify-content: space-around;
+}
+.row1 {
+  display: flex;
+  flex-direction: column;
+  border: black 2px solid;
+  justify-content: space-around;
+}
+
+.MenuBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: black 2px solid;
+  height: 80px;
+  font-size: 30px;
+  margin: 0px;
+  background-color: lightblue;
+}
