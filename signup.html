@@ -3,24 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/login.css"/>
   </head>
   <body>
     <div class="container">
         <h1 id="loginTitle">Sign Up</h1>
-      <form>
+      <form id="loginForm">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <label for="exampleInputUsername" class="form-label">Username</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="exampleInputUsername"
+            aria-describedby="usernameHelp"
           />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+          <div id="usernameHelp" class="form-text">
+            Choose a unique username.
           </div>
         </div>
         <div class="mb-3">
@@ -40,5 +40,41 @@
     </div>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get form data
+        const username = document.getElementById('exampleInputUsername').value;
+        const password = document.getElementById('exampleInputPassword1').value;
+
+        // TODO: Hash the password before sending it (you can use libraries like bcrypt.js)
+
+        // Send data to RestDB for login
+        fetch('https://assignment2-1d63.restdb.io/rest/account', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-apikey': '65a4e6d5da104321e54ba32f'
+            },
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the login response
+            console.log(data);
+
+            // Display alert based on the response
+            if (data.error) {
+                alert('Login unsuccessful. Please check your username and password.');
+            } else {
+                alert('Login successful!');
+            }
+        });
+      });
+    </script>
   </body>
 </html>
